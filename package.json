@@ -1,0 +1,40 @@
+{
+  "name": "shopping-cart-engine",
+  "version": "1.0.0",
+  "description": "Production-ready Shopping Cart Engine microservice built with Node.js, Express, and MongoDB",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "keywords": [
+    "cart",
+    "e-commerce",
+    "microservice",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "Backend Engineering",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "joi": "^17.11.0",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.54.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
