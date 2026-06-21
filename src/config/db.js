@@ -9,7 +9,7 @@
  * flexible initialization timing and health checks before server startup.
  */
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 /**
  * Validates that required environment variables are present
@@ -72,7 +72,7 @@ const disconnectDB = async () => {
   }
 };
 
-module.exports = {
+export {
   connectDB,
   disconnectDB,
   mongoose,
