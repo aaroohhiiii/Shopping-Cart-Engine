@@ -12,7 +12,7 @@
  * for customers and easier to debug.
  */
 
-module.exports = {
+export default {
   tiers: [
     {
       id: 'bronze',
