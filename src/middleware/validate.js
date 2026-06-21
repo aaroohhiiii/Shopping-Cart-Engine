@@ -9,7 +9,7 @@
  * before reaching controllers, providing early rejection of malformed requests.
  */
 
-const Joi = require('joi');
+import { attempt, ValidationError } from 'joi';
 
 /**
  * Validates request against a Joi schema
@@ -24,9 +24,9 @@ const validate = (schema) => {
   return (req, res, next) => {
     try {
       // Validate each part of the request separately
-      const bodySchema = schema.body ? Joi.attempt(req.body, schema.body) : req.body;
-      const paramsSchema = schema.params ? Joi.attempt(req.params, schema.params) : req.params;
-      const querySchema = schema.query ? Joi.attempt(req.query, schema.query) : req.query;
+      const bodySchema = schema.body ? attempt(req.body, schema.body) : req.body;
+      const paramsSchema = schema.params ? attempt(req.params, schema.params) : req.params;
+      const querySchema = schema.query ? attempt(req.query, schema.query) : req.query;
 
       // Attach validated values back to request
       req.body = bodySchema;
@@ -35,7 +35,7 @@ const validate = (schema) => {
 
       next();
     } catch (error) {
-      if (error instanceof Joi.ValidationError) {
+      if (error instanceof ValidationError) {
         // Extract all error messages in a structured format
         const details = error.details.map(detail => {
           const path = detail.path.join('.');
@@ -56,4 +56,4 @@ const validate = (schema) => {
   };
 };
 
-module.exports = validate;
+export default validate;

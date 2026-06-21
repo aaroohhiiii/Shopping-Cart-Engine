@@ -6,7 +6,7 @@
  * monitoring, while development uses 'dev' format for quick visual feedback.
  */
 
-const morgan = require('morgan');
+import morgan from 'morgan';
 
 /**
  * Configure morgan based on environment
@@ -28,4 +28,4 @@ const requestLogger = morgan(getFormat(), {
   },
 });
 
-module.exports = requestLogger;
+export default requestLogger;

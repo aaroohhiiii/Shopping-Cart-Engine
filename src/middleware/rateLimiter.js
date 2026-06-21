@@ -14,7 +14,7 @@
  * In production with load balancers, set trust proxy option.
  */
 
-const rateLimit = require('express-rate-limit');
+import rateLimit from 'express-rate-limit';
 
 /**
  * Global rate limiter for general API endpoints
@@ -54,7 +54,7 @@ const checkoutLimiter = rateLimit({
   skipSuccessfulRequests: false, // Count all requests, successful or not
 });
 
-module.exports = {
+export default {
   globalLimiter,
   checkoutLimiter,
 };
