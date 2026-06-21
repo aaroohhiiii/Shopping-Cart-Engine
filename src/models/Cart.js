@@ -23,9 +23,9 @@
  *    Enforces exactly one active cart per user at database layer
  */
 
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const itemSchema = new mongoose.Schema(
+const itemSchema = new Schema(
   {
     sku: {
       type: String,
@@ -55,7 +55,7 @@ const itemSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const cartSchema = new mongoose.Schema(
+const cartSchema = new Schema(
   {
     userId: {
       type: String,
@@ -127,4 +127,4 @@ cartSchema.index(
   }
 );
 
-module.exports = mongoose.model('Cart', cartSchema, 'carts');
+export default model('Cart', cartSchema, 'carts');

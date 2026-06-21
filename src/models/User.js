@@ -8,7 +8,7 @@
  * so this model exists mainly for referential integrity and potential future expansion.
  */
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {

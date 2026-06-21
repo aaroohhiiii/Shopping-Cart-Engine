@@ -13,9 +13,9 @@
  * reconstruction of cart history without joins.
  */
 
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const auditLogSchema = new mongoose.Schema(
+const auditLogSchema = new Schema(
   {
     userId: {
       type: String,
@@ -23,7 +23,7 @@ const auditLogSchema = new mongoose.Schema(
       index: true,
     },
     cartId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Cart',
       required: true,
       index: true,
@@ -50,7 +50,7 @@ const auditLogSchema = new mongoose.Schema(
      * Stored as Mixed type to allow flexible schema evolution
      */
     snapshot: {
-      type: mongoose.Schema.Types.Mixed,
+      type: Schema.Types.Mixed,
       required: true,
     },
     timestamp: {
@@ -94,4 +94,4 @@ auditLogSchema.index(
 //   { expireAfterSeconds: 63072000 } // 2 years in seconds
 // );
 
-module.exports = mongoose.model('AuditLog', auditLogSchema, 'audit_logs');
+export default model('AuditLog', auditLogSchema, 'audit_logs');
